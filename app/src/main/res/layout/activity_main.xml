@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/NazwaAktywmnosci"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dodaj nowy trening"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/CzasEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Wprowadź czas trwania (minuty)"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/DystansEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Wprowadź dystans (km)"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/KalorieEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Wprowadź spalone kalorie"
+            android:inputType="number" />
+
+
+        <SeekBar
+            android:id="@+id/OcenaIntensSeek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="2" />
+
+
+        <RadioGroup
+            android:id="@+id/AktywnosciRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/SpacerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Spacer" />
+
+            <RadioButton
+                android:id="@+id/BiegButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bieg" />
+
+            <RadioButton
+                android:id="@+id/SilowyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trening siłowy" />
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/DodajAktynoscButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dodaj aktywność" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ListaRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp" />
+
+
+</LinearLayout>
