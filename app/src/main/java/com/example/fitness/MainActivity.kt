@@ -26,7 +26,7 @@ class TreningAdapter(
     private val onItemClicked: (Trening) -> Unit
 ) : RecyclerView.Adapter<TreningAdapter.TreningViewHolder>() {
 
-    inner class TreningViewHolder(itemView: android.view.View) :
+    inner class TreningViewHolder(itemView: android.view.View) : //inner class oznacza że klasa jest w srodku innej klasy i moze odwolywac sie do elementow zewnetrznej klasy
         RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.NazwaAktywmnosci)
         val details: TextView = itemView.findViewById(R.id.ListaRecycler)
@@ -34,7 +34,7 @@ class TreningAdapter(
         fun bind(trening: Trening) {
             title.text = trening.typAktywnosci
             details.text = "Dystans: ${trening.dystans} km, Kalorie: ${trening.kalorie} kcal"
-            itemView.setOnClickListener { onItemClicked(trening) }
+            itemView.setOnClickListener { onItemClicked(trening) } //tutaj dziala inner w miejscu onItemClicked(trening) bo chce sie odwolac do private val ktore jest w glownej klasie
         }
     }
 
