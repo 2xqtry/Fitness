@@ -51,7 +51,7 @@ class TreningAdapter(
     override fun getItemCount(): Int = treningi.size
 }
 
-// MainActivity
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var treningi: MutableList<Trening>
@@ -60,17 +60,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        // Inicjalizacja danych
         treningi = loadData()
-
-        // RecyclerView setup
         val recyclerView: RecyclerView = findViewById(R.id.ListaRecycler)
         adapter = TreningAdapter(treningi) { trening -> showDetailsDialog(trening) }
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        // Obsługa formularza
         val czasEditText: EditText = findViewById(R.id.CzasEditText)
         val dystansEditText: EditText = findViewById(R.id.DystansEditText)
         val kalorieEditText: EditText = findViewById(R.id.KalorieEditText)
@@ -95,15 +90,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    // Metoda do pobrania zaznaczonego RadioButton
     private fun getSelectedRadioButtonText(radioGroup: RadioGroup): String {
         val selectedId = radioGroup.checkedRadioButtonId
         val selectedRadioButton: RadioButton = findViewById(selectedId)
         return selectedRadioButton.text.toString()
     }
-
-    // Dialog z detalami
     private fun showDetailsDialog(trening: Trening) {
         AlertDialog.Builder(this)
             .setTitle(trening.typAktywnosci)
@@ -116,8 +107,6 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("OK", null)
             .show()
     }
-
-    // Etykiety intensywności
     private fun getIntensywnoscLabel(intensywnosc: Int): String {
         return when (intensywnosc) {
             0 -> "Niska"
@@ -126,8 +115,6 @@ class MainActivity : AppCompatActivity() {
             else -> "Nieznana"
         }
     }
-
-    // Zapis danych do SharedPreferences
     private fun saveData() {
         val gson = Gson()
         val json = gson.toJson(treningi)
@@ -135,8 +122,6 @@ class MainActivity : AppCompatActivity() {
             getSharedPreferences("TreningApp", Context.MODE_PRIVATE)
         preferences.edit().putString("treningi", json).apply()
     }
-
-    // Odczyt danych z SharedPreferences
     private fun loadData(): MutableList<Trening> {
         val preferences: SharedPreferences =
             getSharedPreferences("TreningApp", Context.MODE_PRIVATE)
